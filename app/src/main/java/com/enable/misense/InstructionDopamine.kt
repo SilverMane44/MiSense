@@ -22,5 +22,6 @@ class InstructionDopamine : AppCompatActivity() {
             startActivity(moveToMainActivity)
         }
 
+
     }
 }

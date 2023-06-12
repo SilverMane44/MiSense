@@ -3,6 +3,14 @@
     <string name="welcome">Selamat datang di MiSense \n Pilih senyawa yang akan di deteksi</string>
     <!--    Instruction for measurement-->
     <string name="inst_dopamine">Petunjuk Pengukuran Dopamin</string>
+    <string name="howto_dopamine1">Siapkan alat bantu deteksi beserta kertas µPAD \n\nKonfigurasi kamera smartphone dalam mode manual dengan fokus 0,3 shutter speed 1/60fs, ISO 200, dan White Balance 4400k, Rasio gambar 1:1</string>
+    <string name="howto_dopamine2_1">1. Teteskan 2,5 µL katalis G-Pt pada zona deteksi melalui bagian bawah</string>
+    <string name="howto_dopamine2_2">2. Balik µPAD dan masukkan ke dalam tray yang telah disediakan</string>
+    <string name="howto_dopamine2_3">3. Teteskan 15 µL cairan sampel pada zona sampel melalui bagian atas dan tunggu 1 menit
+\n4. Teteskan 2,5 µL reagen FeCl3 pada masing-masing zona deteksi dan tunggu 15 detik
+\n5. Teteskan 2,5 µL phenanthroline pada masing-masing zona deteksi dan tunggu 15 detik</string>
+    <string name="howto_dopamine2_4">6. Masukkan tray berisi µPAD kedalam alat bantu deteksi dan nyalakan
+\n7. Ambil gambar dan pastikan berada tepat di tengah</string>
     <string name="inst_glucose">Petunjuk Pengukuran Glukosa</string>
     <string name="inst_nadh">Petunjuk Pengukuran NADH</string>
     <string name="preview">Preview</string>

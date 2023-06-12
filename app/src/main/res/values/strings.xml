@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">MiSense</string>
+    <string name="welcome">Selamat datang di MiSense \n Silakan pilih senyawa yang ingin di deteksi</string>
+    <!--    Instruction for measurement-->
+    <string name="inst_dopamine">Petunjuk Pengukuran Dopamin</string>
+    <string name="inst_glucose">Petunjuk Pengukuran Glukosa</string>
+    <string name="inst_nadh">Petunjuk Pengukuran NADH</string>
+    <string name="preview">Preview</string>
+    <!--    Here for button text-->
+    <string name="btn_dopamine">Dopamin</string>
+    <string name="btn_glucose">Glukosa</string>
+    <string name="btn_nadh">NADH</string>
+    <string name="btn_gallery">Gallery</string>
+    <string name="btn_next">Lanjut</string>
+    <string name="btn_retry">Ulangi</string>
+    <string name="btn_select">Pilih</string>
+    <string name="btn_cancel">Batal</string>
+    <string name="btn_save">Simpan</string>
+    <string name="btn_finish">Selesai</string>
+    <string name="btn_calculate">Hitung</string>
+
+</resources>

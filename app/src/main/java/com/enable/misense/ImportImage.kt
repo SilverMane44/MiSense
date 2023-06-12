@@ -19,6 +19,8 @@ class ImportImage : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnOpengallery.setOnClickListener { startGallery() }
+        binding.btnPrev.setOnClickListener { finish() }
+
 
     }
 

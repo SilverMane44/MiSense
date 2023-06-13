@@ -16,7 +16,7 @@ class InstructionDopamine : AppCompatActivity() {
             startActivity(moveToImportImage)
         }
 
-        val btnprevious: Button = findViewById(R.id.btn_prevdop)
+        val btnprevious: Button = findViewById(R.id.btn_prev)
         btnprevious.setOnClickListener {
             val moveToMainActivity = Intent( this@InstructionDopamine, MainActivity::class.java)
             startActivity(moveToMainActivity)

@@ -6,12 +6,16 @@ import android.content.Intent.ACTION_GET_CONTENT
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.view.View
 import com.enable.misense.databinding.ActivityImportImageBinding
 import androidx.activity.result.contract.ActivityResultContracts
 
 
 class ImportImage : AppCompatActivity() {
     private lateinit var binding: ActivityImportImageBinding
+    private var i = 0
+    private val handler = Handler()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,8 +23,12 @@ class ImportImage : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnOpengallery.setOnClickListener { startGallery() }
-        binding.btnPrev.setOnClickListener { finish() }
-
+        binding.btnPrev.setOnClickListener {
+            finish()
+        }
+        binding.btnNext.setOnClickListener {
+            setupProgressBar()
+        }
 
     }
 
@@ -44,6 +52,23 @@ class ImportImage : AppCompatActivity() {
         launcherIntentGallery.launch(chooser)
     }
 
-
-
+    private fun setupProgressBar() {
+        binding.progressBar.visibility = View.VISIBLE
+        i = binding.progressBar.progress
+        Thread(Runnable {
+            while (i < 100 ) {
+                i += 1
+                handler.post(Runnable {
+                    binding.progressBar.progress = i
+                    binding.progressCounter!!.text = i.toString() + "/" + binding.progressBar.max
+                })
+                try {
+                    Thread.sleep(100)
+                } catch (e: InterruptedException) {
+                    e.printStackTrace()
+                }
+            }
+            binding.progressBar.visibility = View.INVISIBLE
+        }).start()
+    }
 }

@@ -14,3 +14,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "MiSense"
 include ':app'
+include ':openCV'

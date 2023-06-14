@@ -26,8 +26,10 @@ class ImportImage : AppCompatActivity() {
         binding.btnPrev.setOnClickListener {
             finish()
         }
+        binding.progressBar.visibility = View.INVISIBLE
         binding.btnNext.setOnClickListener {
             setupProgressBar()
+//            moveToResult
         }
 
     }
@@ -39,6 +41,7 @@ class ImportImage : AppCompatActivity() {
             val selectedImg = result.data?.data as Uri
             selectedImg.let { uri ->
                 val myFile = uriToFile(uri, this@ImportImage)
+//                covert Uri to bitmap don't know how
                 binding.imageView.setImageURI(uri)
             }
         }
@@ -56,14 +59,13 @@ class ImportImage : AppCompatActivity() {
         binding.progressBar.visibility = View.VISIBLE
         i = binding.progressBar.progress
         Thread(Runnable {
-            while (i < 100 ) {
+            while (i < 50 ) {
                 i += 1
                 handler.post(Runnable {
                     binding.progressBar.progress = i
-                    binding.progressCounter!!.text = i.toString() + "/" + binding.progressBar.max
                 })
                 try {
-                    Thread.sleep(100)
+                    Thread.sleep(50)
                 } catch (e: InterruptedException) {
                     e.printStackTrace()
                 }

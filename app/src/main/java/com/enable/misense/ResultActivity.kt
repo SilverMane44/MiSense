@@ -1,15 +1,11 @@
 package com.enable.misense
 
-import android.app.Instrumentation.ActivityResult
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.view.LayoutInflater
-import com.enable.misense.databinding.ActivityImportImageBinding
 import com.enable.misense.databinding.ActivityResultBinding
 
 class ResultActivity : AppCompatActivity() {
@@ -46,8 +42,7 @@ class ResultActivity : AppCompatActivity() {
         }
 
         binding.btnPrev.setOnClickListener {
-            val moveToImportImage = Intent( this@ResultActivity, ImportImage::class.java)
-            startActivity(moveToImportImage)
+            finish()
         }
 
     }

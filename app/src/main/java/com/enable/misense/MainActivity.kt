@@ -22,6 +22,12 @@ class MainActivity : AppCompatActivity() {
             startActivity(moveToInstructionGlucose)
         }
 
+        val btnNADH: Button = findViewById(R.id.btn_nadh)
+        btnNADH.setOnClickListener {
+            val moveToInstructionNADH = Intent( this@MainActivity, InstructionNADH::class.java)
+            startActivity(moveToInstructionNADH)
+        }
+
 
 
     }

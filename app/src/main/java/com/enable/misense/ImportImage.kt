@@ -37,8 +37,6 @@ class ImportImage : AppCompatActivity() {
         setContentView(binding.root)
 
         OpenCVLoader.initDebug()
-        Log.d("Substance", substance.toString())
-        substance = intent.getIntExtra("SubType", substance)
 
         binding.btnOpengallery.setOnClickListener { startGallery() }
         binding.btnPrev.setOnClickListener {
@@ -46,12 +44,9 @@ class ImportImage : AppCompatActivity() {
         }
         binding.progressBar.visibility = View.INVISIBLE
         binding.btnNext.setOnClickListener {
-            thresholdImg()
-//            setupProgressBar()
+            cropImage()
+            setupProgressBar()
             sendvaluetodisplay()
-//            val moveToResultActivity = Intent(this@ImportImage, ResultActivity::class.java)
-//            moveToResultActivity.putExtra("Uri",urisend)
-//            startActivity(moveToResultActivity)
         }
 
     }
@@ -67,6 +62,8 @@ class ImportImage : AppCompatActivity() {
                 urisend=uri
             }
             bm = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImg)
+            thresholdImg()
+
         }
     }
 
@@ -106,7 +103,7 @@ class ImportImage : AppCompatActivity() {
     private fun thresholdImg() {
         mat = Mat(bm.height, bm.width, CvType.CV_8U)
         graymat = Mat(bm.height, bm.width, CvType.CV_8U)
-        resultmat= Mat()
+        resultmat= Mat(bm.height, bm.width, CvType.CV_8U)
         alphamat= Mat(bm.height, bm.width, CvType.CV_8U)
         RGBA= arrayListOf()
 
@@ -122,7 +119,7 @@ class ImportImage : AppCompatActivity() {
         Core.merge(RGBA, resultmat)
 
         Utils.matToBitmap(resultmat,bm)
-        cropImage()
+        binding.imageView.setImageBitmap(bm)
 
     }
 
@@ -147,12 +144,13 @@ class ImportImage : AppCompatActivity() {
         val roi3= Rect (midpx-imgwidth, midpy, imgwidth, imgheight)
         val roi4= Rect (midpx, midpy, imgwidth, imgheight)
 
-        //Crop Image
+        //Init Array
         hsvC1= arrayListOf()
         hsvC2= arrayListOf()
         hsvC3= arrayListOf()
         hsvC4= arrayListOf()
 
+        //Crop Img
         crop1 = Mat(resultmat,roi1)
         crop2 = Mat(resultmat,roi2)
         crop3 = Mat(resultmat,roi3)
@@ -173,6 +171,10 @@ class ImportImage : AppCompatActivity() {
     private var sat2= 0.0
     private var sat3= 0.0
     private var sat4= 0.0
+    private var testarray0= 0.0
+    private var testarray1= 0.0
+    private var testarray2= 0.0
+    private var testarray3= 0.0
 
     private fun getHSV() {
 
@@ -181,11 +183,21 @@ class ImportImage : AppCompatActivity() {
         Imgproc.cvtColor(crop2,crop2, Imgproc.COLOR_RGB2HSV)
         Imgproc.cvtColor(crop3,crop3, Imgproc.COLOR_RGB2HSV)
         Imgproc.cvtColor(crop4,crop4, Imgproc.COLOR_RGB2HSV)
-
         //Get Average HSV value
         Core.split(crop1,hsvC1)
         hue1 = Core.mean(hsvC1[0]).toString().replace("[","0, ").split(", ")[1].toDouble()*2
         sat1 = Core.mean(hsvC1[1]).toString().replace("[","0, ").split(", ")[1].toDouble()
+
+//        //TestArray
+//        testarray0 = Core.mean(hsvC1[0]).toString().replace("[","0, ").split(", ")[1].toDouble()
+//        testarray1 = Core.mean(hsvC1[1]).toString().replace("[","0, ").split(", ")[1].toDouble()
+//        testarray2 = Core.mean(hsvC1[2]).toString().replace("[","0, ").split(", ")[1].toDouble()
+////        testarray3 = Core.mean(hsvC1[3]).toString().replace("[","0, ").split(", ")[1].toDouble()
+//
+//        Log.d("Array0", testarray0.toString())
+//        Log.d("Array1", testarray1.toString())
+//        Log.d("Array2", testarray2.toString())
+////        Log.d("Array3", testarray3.toString())
 
         Core.split(crop2,hsvC2)
         hue2 = Core.mean(hsvC2[0]).toString().replace("[","0, ").split(", ")[1].toDouble()*2
@@ -199,6 +211,8 @@ class ImportImage : AppCompatActivity() {
         hue4 = Core.mean(hsvC4[0]).toString().replace("[","0, ").split(", ")[1].toDouble()*2
         sat4 = Core.mean(hsvC4[1]).toString().replace("[","0, ").split(", ")[1].toDouble()
 
+        substance = intent.getIntExtra("SubType", substance)
+        Log.d("Substance", substance.toString())
         //Get Concentration
         if (substance==0) {
             conc1=(sat1-6.14823)/2.04579
@@ -233,7 +247,7 @@ class ImportImage : AppCompatActivity() {
             putExtra("con2disp4",conc4)
             putExtra("Uri",urisend.toString())
 
-            if (substance == 1) {
+            if (substance == 0) {
                 putExtra("val2disp1", sat1)
                 putExtra("val2disp2", sat2)
                 putExtra("val2disp3", sat3)

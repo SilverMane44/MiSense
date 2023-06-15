@@ -20,7 +20,12 @@
         \nTeteskan 2,5 µL reagen glucose oxidase kit pada masing-masing zona deteksi dan tunggu 15 detik</string>
     <string name="howto_glucose2_4">Ambil gambar dan pastikan berada tepat di tengah</string>
     <string name="inst_nadh">Petunjuk Pengukuran NADH</string>
+    <string name="indexhsv">H/S/V</string>
+    <string name="indexconc">Concentration</string>
+    <!--    Others-->
     <string name="preview">Preview</string>
+    <string name="txt_hue">Hue</string>
+    <string name="txt_sat">Sat</string>
     <!--    Here for button text-->
     <string name="btn_dopamine">Dopamin</string>
     <string name="btn_glucose">Glukosa</string>

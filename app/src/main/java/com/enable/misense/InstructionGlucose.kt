@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.widget.Button
 
 class InstructionGlucose : AppCompatActivity() {
+
+    var substance=1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_instruction_glucose)
@@ -13,6 +16,7 @@ class InstructionGlucose : AppCompatActivity() {
         val btntoimportimg: Button = findViewById(R.id.btn_toimportimg)
         btntoimportimg.setOnClickListener {
             val moveToImportImage = Intent( this@InstructionGlucose, ImportImage::class.java)
+            moveToImportImage.putExtra("SubTypre", substance)
             startActivity(moveToImportImage)
         }
 

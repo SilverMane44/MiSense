@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.widget.Button
 
 class InstructionDopamine : AppCompatActivity() {
+
+    var substance=0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_instruction_dopamine)
@@ -13,6 +16,7 @@ class InstructionDopamine : AppCompatActivity() {
         val btntoimportimg: Button = findViewById(R.id.btn_toimportimg)
         btntoimportimg.setOnClickListener {
             val moveToImportImage = Intent( this@InstructionDopamine, ImportImage::class.java)
+            moveToImportImage.putExtra("SubTypre", substance)
             startActivity(moveToImportImage)
         }
 

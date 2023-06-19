@@ -72,10 +72,10 @@ class ResultActivity : AppCompatActivity() {
         bmcrop3= Bitmap.createBitmap(fullbm, midpx-imgwidth, midpy, imgwidth, imgheight)
         bmcrop4= Bitmap.createBitmap(fullbm, midpx, midpy, imgwidth, imgheight)
 
-        binding.imgResult1.setImageBitmap(bmcrop1)
-        binding.imgResult2.setImageBitmap(bmcrop2)
-        binding.imgResult3.setImageBitmap(bmcrop3)
-        binding.imgResult4.setImageBitmap(bmcrop4)
+        binding.dispres1.setImageBitmap(bmcrop1)
+        binding.dispres2.setImageBitmap(bmcrop2)
+        binding.dispres3.setImageBitmap(bmcrop3)
+        binding.dispres4.setImageBitmap(bmcrop4)
 
         binding.val1.setText(String.format("%.2f", val1))
         binding.val2.setText(String.format("%.2f", val2))

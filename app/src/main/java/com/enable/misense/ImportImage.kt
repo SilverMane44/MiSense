@@ -192,12 +192,12 @@ class ImportImage : AppCompatActivity() {
 //        testarray0 = Core.mean(hsvC1[0]).toString().replace("[","0, ").split(", ")[1].toDouble()
 //        testarray1 = Core.mean(hsvC1[1]).toString().replace("[","0, ").split(", ")[1].toDouble()
 //        testarray2 = Core.mean(hsvC1[2]).toString().replace("[","0, ").split(", ")[1].toDouble()
-////        testarray3 = Core.mean(hsvC1[3]).toString().replace("[","0, ").split(", ")[1].toDouble()
+//        testarray3 = Core.mean(hsvC1[3]).toString().replace("[","0, ").split(", ")[1].toDouble()
 //
 //        Log.d("Array0", testarray0.toString())
 //        Log.d("Array1", testarray1.toString())
 //        Log.d("Array2", testarray2.toString())
-////        Log.d("Array3", testarray3.toString())
+//        Log.d("Array3", testarray3.toString())
 
         Core.split(crop2,hsvC2)
         hue2 = Core.mean(hsvC2[0]).toString().replace("[","0, ").split(", ")[1].toDouble()*2
